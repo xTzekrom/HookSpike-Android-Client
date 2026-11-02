@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ai.hookspike.assistant">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Internet & Network permissions for WebView -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Overlay & Foreground Service permissions -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
-    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
+        android:icon="@android:drawable/sym_def_app_icon"
         android:label="HookSpike"
-        android:theme="@android:style/Theme.DeviceDefault.NoActionBar">
+        android:roundIcon="@android:drawable/sym_def_app_icon"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        android:usesCleartextTraffic="true">
 
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -24,8 +31,8 @@
         <service
             android:name=".FloatingOrbService"
             android:enabled="true"
-            android:exported="false"
-            android:foregroundServiceType="specialUse" />
+            android:exported="false" />
 
     </application>
+
 </manifest>
